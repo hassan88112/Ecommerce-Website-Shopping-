@@ -9,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.thymeleaf.util.StringUtils;
+
+import java.io.IOException;
 
 @Controller
 public class ProductController {
@@ -33,15 +37,16 @@ public class ProductController {
     }
 
     @PostMapping("/addProduct")
-    public String AddProducts(@ModelAttribute ("dto") ProductDTO dto ,Model model){
+    public String AddProducts(@ModelAttribute ("dto") ProductDTO dto , Model model )  {
 
-     Product p=new Product();
-     p.setId(p.getId());
-     p.setName(dto.getName());
-     p.setPrice(dto.getPrice());
-     p.setDescription(dto.getDescription());
 
-     productService.AddProduct(p);
+        Product p=new Product();
+        p.setId(dto.getId());
+        p.setName(dto.getName());
+        p.setPrice(dto.getPrice());
+        p.setDescription(dto.getDescription());
+
+        productService.AddProduct(p);
 
         return "redirect:/products";
     }
@@ -69,5 +74,21 @@ public class ProductController {
         productService.deleteProductById(id);
         return "redirect:/products";
     }
+    @GetMapping("/example")
+    public String example(){
+
+        return "example";
+    }
+
+    @GetMapping("/AboutUs")
+    public String aboutus(){
+
+        return "AboutUs";
+    }
+
+
+
+
+
 
 }
