@@ -40,7 +40,7 @@
                 </ul>
             </div>
         </nav>
-        <br><br><br><br><br><br>
+        <br><br><br><br>
         <center>
             <div  class="card border-primary mb-3" style="max-width: 18rem;">
                 <div class="card-header">Add Product</div>
@@ -48,8 +48,24 @@
                     <div>
                         <div  >
                             <form action="#"  th:action="@{/addProduct}" th:object="${dto}" method="post" >
-                                <div class="form-group"  >
+                                <div class="form-group" >
                                     <input  type="hidden"  required th:field="*{id}"  class="form-control">
+                                    <label class="font-weight-bold" style="font-size:120%;">Full Name</label>
+                                    <input  type="text"  required th:field="*{fullName}" name="name" class="form-control">
+                                    <br>
+                                    <div>
+                                        <label>Gender</label>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" style="font-size:120%;" type="radio" th:field="*{gender}" value="Male" >
+                                            <label class="form-check-label" >Male</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" style="font-size:120%;" type="radio" th:field="*{gender}" value="Female">
+                                            <label class="form-check-label" >Female</label>
+                                        </div>
+                                    </div>
+                                    <div></div>
+
                                     <label class="font-weight-bold" style="font-size:120%;">Product Name</label>
                                     <input  type="text"  required th:field="*{name}" name="name" class="form-control">
                                     <label class="font-weight-bold"  style="font-size:120%;">Product Price</label>

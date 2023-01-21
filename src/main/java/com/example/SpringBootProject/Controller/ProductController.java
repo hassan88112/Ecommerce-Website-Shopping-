@@ -43,6 +43,8 @@ public class ProductController {
         Product p=new Product();
         p.setId(dto.getId());
         p.setName(dto.getName());
+        p.setFullName(dto.getFullName());
+        p.setGender(dto.getGender());
         p.setPrice(dto.getPrice());
         p.setDescription(dto.getDescription());
 
@@ -57,6 +59,8 @@ public class ProductController {
             Product p=productService.findProductById(id).get();
             ProductDTO dto=new ProductDTO();
             dto.setId(p.getId());
+            dto.setFullName(p.getFullName());
+            dto.setGender(p.getGender());
             dto.setName(p.getName());
             dto.setPrice(p.getPrice());
             dto.setDescription(p.getDescription());
