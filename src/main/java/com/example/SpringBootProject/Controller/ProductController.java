@@ -9,10 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.thymeleaf.util.StringUtils;
 
-import java.io.IOException;
+import java.util.Optional;
 
 @Controller
 public class ProductController {
@@ -31,7 +29,9 @@ public class ProductController {
         return "products";
     }
     @GetMapping("/addProduct")
-    public String AddProducts(){
+    public String AddProducts(Model model){
+
+        model.addAttribute("dto",new ProductDTO());
 
         return "addProduct";
     }
@@ -51,20 +51,19 @@ public class ProductController {
         return "redirect:/products";
     }
 
-    @GetMapping("/update/{id}")
+    @GetMapping("/update/{id}")         // error f id nseet adeef in html 2lshan y detech 2leh
     public String update(@PathVariable Long id ,Model model){
 
-        Product p=productService.findProductById(id).get();
-        ProductDTO dto=new ProductDTO();
-        dto.setId(p.getId());
-        dto.setName(p.getName());
-        dto.setPrice(p.getPrice());
-        dto.setDescription(p.getDescription());
+            Product p=productService.findProductById(id).get();
+            ProductDTO dto=new ProductDTO();
+            dto.setId(p.getId());
+            dto.setName(p.getName());
+            dto.setPrice(p.getPrice());
+            dto.setDescription(p.getDescription());
+            model.addAttribute("dto",dto);
 
-        model.addAttribute("products" ,productService.findAllProducts());
-        model.addAttribute("dto",dto);
+            return "addProduct";
 
-        return "addProduct";
 
     }
 
