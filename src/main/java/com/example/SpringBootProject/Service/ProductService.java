@@ -36,4 +36,9 @@ public class ProductService {
 
         productRepo.deleteById(id);
     }
+
+    public List<Product> getCustomerByDate(String startDate, String endDate){
+
+        return productRepo.getCustomerByDate(startDate,endDate);
+    }
 }

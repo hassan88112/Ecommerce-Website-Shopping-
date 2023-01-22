@@ -6,28 +6,8 @@
 
         <div th:replace="fragments :: head" ></div>
 <body>
-<div class="sidebar">
-  <h1>Shalash</h1>
-  <a href="#"  th:href="products" >Home</a>
-  <a href="" th:href="AboutUs">About</a>
-  <a href="">Portfolio</a>
-  <a href="">Gallery</a>
-  <a href="">Service</a>
-  <a href="">Join</a>
-  <a href="">Contact</a>
-  <br>
-  <div style="display-outside: ruby-base-container">
-    <a href="https://www.facebook.com/hassan.shalash.18/" style="display: inline">
-      <i class="fa fa-facebook"></i>
-    </a>
-    <a href="https://www.instagram.com/hassan__shalash/" style="display: inline">
-      <i class="fa fa-instagram"></i>
-    </a>
-    <a href="https://www.linkedin.com/in/hassan-shalash-a5409023a/" class="linkedin" style="display: inline">
-      <i class="fa fa-linkedin"></i>
-    </a>
-  </div>
-</div>
+
+       <div th:replace="fragments :: sidebar" ></div>
 
 <div class="container">
   <div class="container">

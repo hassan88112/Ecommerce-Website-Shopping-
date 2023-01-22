@@ -7,28 +7,8 @@
     <div th:replace="fragments :: head" ></div>
 
 <body>
-<div class="sidebar">
-    <h1>Shalash</h1>
-    <a href="#"  th:href="products" >Home</a>
-    <a href=""   th:href="AboutUs">About</a>
-    <a href="">Portfolio</a>
-    <a href="">Gallery</a>
-    <a href="">Service</a>
-    <a href="">Join</a>
-    <a href="">Contact</a>
-    <br>
-    <div style="display-outside: ruby-base-container">
-        <a href="https://www.facebook.com/hassan.shalash.18/" style="display: inline">
-            <i class="fa fa-facebook"></i>
-        </a>
-        <a href="https://www.instagram.com/hassan__shalash/" style="display: inline">
-            <i class="fa fa-instagram"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/hassan-shalash-a5409023a/" class="linkedin" style="display: inline">
-            <i class="fa fa-linkedin"></i>
-        </a>
-    </div>
-</div>
+    <div th:replace="fragments :: sidebar" ></div>
+
 <div class="container">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -40,37 +20,44 @@
                 </ul>
             </div>
         </nav>
-        <br><br><br><br>
+        <br>
         <center>
             <div  class="card border-primary mb-3" style="max-width: 18rem;">
-                <div class="card-header">Add Product</div>
+                <div class="card-header"><label class="font-weight-bold" style="font-size:120%">Add Product</label></div>
                 <div class="card-body text-primary">
                     <div>
                         <div  >
                             <form action="#"  th:action="@{/addProduct}" th:object="${dto}" method="post" >
                                 <div class="form-group" >
                                     <input  type="hidden"  required th:field="*{id}"  class="form-control">
-                                    <label class="font-weight-bold" style="font-size:120%;">Full Name</label>
-                                    <input  type="text"  required th:field="*{fullName}" name="name" class="form-control">
+
+                                    <label class="font-weight-bold" style="font-size:120%">Full Name</label>
+                                    <input  type="text"  required th:field="*{fullName}" name="fullName" class="form-control">
+
+                                    <label class="font-weight-bold" style="font-size:120%">Age</label>
+                                    <input  type="number"  required th:field="*{age}" name="age" class="form-control">
+
+                                    <label class="font-weight-bold" style="font-size:120%">Date</label>
+                                    <input  type="date"  required th:field="*{date}" name="date" class="form-control">
                                     <br>
                                     <div>
-                                        <label>Gender</label>
+                                        <label class="font-weight-bold" style="font-size:120%">Gender</label>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" style="font-size:120%;" type="radio" th:field="*{gender}" value="Male" >
+                                            <input class="form-check-input"  type="radio" th:field="*{gender}" value="Male" >
                                             <label class="form-check-label" >Male</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" style="font-size:120%;" type="radio" th:field="*{gender}" value="Female">
+                                            <input class="form-check-input"  type="radio" th:field="*{gender}" value="Female">
                                             <label class="form-check-label" >Female</label>
                                         </div>
                                     </div>
                                     <div></div>
 
-                                    <label class="font-weight-bold" style="font-size:120%;">Product Name</label>
+                                    <label class="font-weight-bold" style="font-size:120%">Product Name</label>
                                     <input  type="text"  required th:field="*{name}" name="name" class="form-control">
-                                    <label class="font-weight-bold"  style="font-size:120%;">Product Price</label>
+                                    <label class="font-weight-bold"  style="font-size:120%">Product Price</label>
                                     <input  type="number"  required th:field="*{price}" name="price"  class="form-control">
-                                    <label class="font-weight-bold" style="font-size:120%;">Product Description</label>
+                                    <label class="font-weight-bold" style="font-size:120%">Product Description</label>
                                     <input type="text"  required th:field="*{description}" name="description" class="form-control">
                                     <br>
                                     <button type="submit" class="btn btn-primary">Submit</button>
