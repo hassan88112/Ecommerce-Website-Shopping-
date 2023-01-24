@@ -94,16 +94,24 @@ public class ProductController {
         return  "products";
     }
 
-    @GetMapping("/test")
-    public String test(){
-
-        return "test";
-    }
 
     @GetMapping("/AboutUs")
     public String aboutus(){
 
         return "AboutUs";
+    }
+
+    @GetMapping("/test")
+    public String test(Model model){
+
+        return "test";
+    }
+
+    @GetMapping("/testJason")
+    public String test(){
+
+        return "testJason";
+
     }
 
 
