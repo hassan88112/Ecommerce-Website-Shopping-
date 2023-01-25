@@ -29,7 +29,7 @@ public class ExcelController {
     @GetMapping("/showExcel")
     public String show(Model model){
         model.addAttribute("excel",new ExcelTest());
-        model.addAttribute("Excels",excelService.findAllExcelTest());
+        model.addAttribute("Excels",excelService.findAllExcelTest());  // get All customers from Excel test
         return "uploadFile";
 
     }
@@ -37,7 +37,7 @@ public class ExcelController {
     public String uploadExcel(@ModelAttribute ("excel") ExcelTest test , RedirectAttributes redirectAttributes){
 
         boolean isFlag=excelService.saveDateFromUploadFlie(test.getFile());
-        return "redirect:/uploadFile";
+        return "redirect:/showExcel";
 
     }
 

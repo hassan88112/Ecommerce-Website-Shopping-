@@ -48,8 +48,8 @@ public class ExcelService {
 
     public Boolean saveDateFromUploadFlie(MultipartFile file) {
         Boolean isFlag=false;
-        String extention= FilenameUtils.getExtension(file.getOriginalFilename());
-        if (extention.equalsIgnoreCase("xls") || extention.equalsIgnoreCase("xlsx")){
+        String e= FilenameUtils.getExtension(file.getOriginalFilename());
+        if (e.equalsIgnoreCase("xls") || e.equalsIgnoreCase("xlsx")){
 
             isFlag=readDataFromExcel(file);
         }
@@ -66,9 +66,10 @@ public class ExcelService {
 
             Row row=rows.next();
             ExcelTest test=new ExcelTest();
-            if (row.getCell(0).getCellType() == Cell.CELL_TYPE_STRING){
+            if (row.getCell(0).getCellType() == Cell.CELL_TYPE_STRING) {
                 test.setFirstName(row.getCell(0).getStringCellValue());
             }
+
             if (row.getCell(1).getCellType() == Cell.CELL_TYPE_NUMERIC){
                 String salary= NumberToTextConverter.toText(row.getCell(1).getNumericCellValue());
                 test.setSalary(salary);
@@ -84,11 +85,11 @@ public class ExcelService {
 
     private Workbook getWorkBook(MultipartFile file) {
         Workbook workbook=null;
-        String e= FilenameUtils.getExtension(file.getOriginalFilename());
+        String extension= FilenameUtils.getExtension(file.getOriginalFilename());
         try {
-            if (e.equalsIgnoreCase("xlsx")){
+            if (extension.equalsIgnoreCase("xlsx")){
                 workbook=new XSSFWorkbook(file.getInputStream());
-            } else if (e.equalsIgnoreCase("xls")) {
+            } else if (extension.equalsIgnoreCase("xls")) {
                 workbook=new HSSFWorkbook(file.getInputStream());
             }
 
